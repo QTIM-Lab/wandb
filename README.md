@@ -134,12 +134,9 @@ DOCKER_VOLUME=$CONTAINER_NAME
 Repopulate docker volume from backup:
 ```bash
 docker volume create $DOCKER_VOLUME 
-
 # Use a temporary container to extract the backup directly into the volume
 docker run --rm -d --name temp_container -v $DOCKER_VOLUME:/restore -v $BACKUP_DIR:/backup busybox sh -c "sleep 3600"
 docker exec temp_container tar -xvf /backup/wandb_"$USER"_backup.tar -C /restore
-
-
 docker run -d --name $CONTAINER_NAME -p $PORT:8080 -v $DOCKER_VOLUME:/vol wandb/local
 docker stop temp_container
 ```
