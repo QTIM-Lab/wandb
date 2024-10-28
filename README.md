@@ -123,11 +123,6 @@ ls /scratch90/bb-10_25_2024/wandb_backup/$RUN
 docker run --rm --volumes-from $CONTAINER_NAME -v $BACKUP_DIR:/backup ubuntu tar cvf /backup/wandb_"$USER"_backup.tar -C /vol .
 
 ```
-<!-- 
-```bash
-mkdir -p $BACKUP_DIR/wandb_"$USER"_backup
-tar -xvf $BACKUP_DIR/wandb_"$USER"_backup.tar -C $BACKUP_DIR/wandb_"$USER"_backup
-``` -->
 
 ## Delete
 ```bash
@@ -148,10 +143,6 @@ DOCKER_VOLUME=$CONTAINER_NAME
 Repopulate docker volume from backup:
 ```bash
 docker volume create $DOCKER_VOLUME 
-# docker run --rm -it -d --name temp_container -v $DOCKER_VOLUME:/restore busybox sh -c "while true; do sleep 3600; done"
-# docker cp $BACKUP_DIR/wandb_"$USER"_backup.tar temp_container:/restore
-# docker exec temp_container tar -xvf /restore/wandb_"$USER"_backup.tar -C /restore
-
 
 # Use a temporary container to extract the backup directly into the volume
 docker run --rm -d --name temp_container -v $DOCKER_VOLUME:/restore -v $BACKUP_DIR:/backup busybox sh -c "sleep 3600"
