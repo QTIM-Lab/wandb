@@ -48,8 +48,6 @@ DRIVER    VOLUME NAME
 local     wandb
 local     wandb-bearceb
 ```
-> Docker volume `wandb-<user>` is automatically created in above docker command.
-
 
 Check it:
 `http://localhost:8080/`
