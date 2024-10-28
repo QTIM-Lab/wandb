@@ -1,8 +1,5 @@
 # wandb
 
-archive notes:
-/home/bearceb/mnt/QTIM/22-2198/MICCAI_Fractionation/README.md
-
 > Some inspiration (# https://github.com/wandb/server/issues/66)
 A guide to using the free tier of wandb
 
