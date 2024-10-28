@@ -108,15 +108,11 @@ wandb.finish()
 BACKUP_DIR=/scratch90/bb-10_25_2024/wandb_backup
 RUN=run-20241027_233842-vfp2lpfv
 cp -r wandb/$RUN /scratch90/bb-10_25_2024/wandb_backup/$RUN
-ls /scratch90/bb-10_25_2024/wandb_backup/
-ls /scratch90/bb-10_25_2024/wandb_backup/$RUN
 # Below /vol is the wandb-<user> container's docker volume mount point.
 # So when using --volumes-from we can access that 
 # containers docker volume at /vol from this ubuntu container.
 
-# docker run --rm --volumes-from $CONTAINER_NAME -v $BACKUP_DIR:/backup ubuntu tar cvf /backup/wandb_"$USER"_backup.tar /vol
 docker run --rm --volumes-from $CONTAINER_NAME -v $BACKUP_DIR:/backup ubuntu tar cvf /backup/wandb_"$USER"_backup.tar -C /vol .
-
 ```
 
 ## Delete
