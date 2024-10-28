@@ -129,7 +129,7 @@ USER=bearceb
 CONTAINER_NAME=wandb-$USER
 DOCKER_VOLUME=$CONTAINER_NAME
 ```
-![wandb_reset.png](wandb_reset.png)
+![wandb_reset1.png](wandb_reset1.png)
 
 Repopulate docker volume from backup:
 ```bash
@@ -140,5 +140,8 @@ docker exec temp_container tar -xvf /backup/wandb_"$USER"_backup.tar -C /restore
 docker run -d --name $CONTAINER_NAME -p $PORT:8080 -v $DOCKER_VOLUME:/vol wandb/local
 docker stop temp_container
 ```
+
+![wandb_reset2.png](wandb_reset2.png)
+
 
 
