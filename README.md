@@ -75,7 +75,8 @@ import random
 
 
 # start a new wandb run to track this script
-wandb.login(key="local-ac9ca6c54d9509ec1dac94cc7c3bd844779265d0")
+KEY="local-61e1c33617fdfd2581ebaad0d4e6d4c32fa671a0"
+wandb.login(key=KEY)
 wandb.init(
     # set the wandb project where this run will be logged
     project="my-awesome-project",
